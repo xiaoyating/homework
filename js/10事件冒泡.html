@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			.grandpa{
+				width: 200px;
+				height: 200px;
+				background: #f00;
+				position: relative;
+				
+			}
+			.father{
+				width: 200px;
+				height: 200px;
+				background: #0f0;
+				position: absolute;
+				top:0;
+				left:300px;
+			}
+			.son{
+				width: 200px;
+				height: 200px;
+				background: #00f;
+				position: absolute;
+				top:0;
+				left:300px;
+			}
+		</style>
+		<script src="js/jquery-3.4.1.min.js"></script>
+	</head>
+	<body>
+		<!-- 
+		什么是事件冒泡
+		事件发生会往上传递给祖先
+		
+		避免事件冒泡的方法
+		1、
+		event.stopPropagation();
+		2、
+		return false;
+		-->
+		
+		<div class="grandpa">
+			<div class="father">
+				<div class="son"></div>
+			</div>
+		</div>
+		
+		<script>
+			$(function(){
+				$(".son").click(function(event){
+					alert("1");					
+				});
+				$(".father").click(function(event){
+					alert("2");
+					// event.stopPropagation();
+					return false;
+				});
+				$(".grandpa").click(function(event){
+					alert("3");
+				});
+			});
+			
+		</script>
+	</body>
+</html>
